@@ -1,0 +1,17 @@
+html { height:100%;}
+body { height:100%;margin:1em;border:1px solid black;padding:1em;}
+h1 { font-size:1.5em;}
+#course_list { display:inline;}
+
+.link { text-decoration:underline;font-style:italic;color:#710F0A;display:inline-block;}
+.link:hover { cursor:pointer;}
+a { font-style:italic;color:#710F0A;}
+
+ul {list-style: none; margin: 0; padding: 0;}
+.name { width:250px;margin-right:1em;display:inline-block;}
+.course { width:100px;margin-right:1em;display:inline-block;}
+.location {width:250px;display:inline-block;}
+
+.prompt { display:none;font-size:0.9em;font-style:italic;color:#71CC0A;}
+
+#map { height:100%;}

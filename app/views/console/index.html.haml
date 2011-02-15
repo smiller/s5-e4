@@ -1,0 +1,58 @@
+= javascript_include_tag "console-courses", "console-users"
+
+%h1 Console
+
+#console 
+
+  #courses
+    %strong Courses:
+    #course_list= @courses.map { |c| c.name }.join(', ')
+    %br
+    .link
+      Add another course
+    .form
+      %input#new_course_name{:type => 'text' }
+      %input#create_course{:type => 'button', :value => 'Create'}
+  
+  %hr
+  
+  #users
+    %strong Users:
+    
+    %br
+    
+    - form_tag('/users') do
+    
+      %ul
+        %li
+          .name Name
+          .course Course
+          .location Location
+        - @users.each do |user|
+          %li
+            .name= user.name
+            .course= user.course.name
+            .location= user.location
+        %li 
+          .name
+            %input.name{:type => 'text', :id => '1_name', :name => '1[name]'}
+          .course
+            %select{:id => '1_course_id', :name => '1[course_id]'}
+              = options_for_select(@courses.map {|c| [ c.name, c.id ] })
+          .location
+            .prompt
+            %input.location{:type => 'text', :id => '1_location', :name => '1[location]'}
+            %input.lat{:type => 'hidden', :id => '1_latitude', :name => '1[latitude]'}
+            %input.lng{:type => 'hidden', :id => '1_longitude', :name => '1[longitude]'}
+    
+      .link
+        Add another user
+      %input{:type => 'submit', :value => 'Create Users'}
+    
+    %p
+      %em Note:
+      When you type in a location and press enter or tab away, the system looks up and displays where it thinks you mean.  If it guesses wrong, please add more information.
+  
+  %hr
+  
+  %a{:href => 'map'} Show Map

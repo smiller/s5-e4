@@ -1,0 +1,17 @@
+== RMU s5-e4
+
+Initial proposal:
+The "map widget for university-web that displays where all of our alumni are located" community project.
+
+On #rmu-session-5, Gregory suggested: "an extra field on our profile page for alumni (or maybe all registered students) to enter their city and then a map to show somewhere on the main site (maybe alumni page if restricted to alumni, maybe everyone with perhaps different color pins between registered students and alumni if we put it somewhere else)"
+
+I would default to Google's Geocoding API and the Google Maps API, but Gregory suggested at least looking at http://openlayers.org/ first.  Further, since by Google's terms we can't use their Geocoding API unless we plot the results on a Google map, we'll use the geokit gem (https://github.com/andre/geokit-gem), which wraps a number of geocoders, including Google, Yahoo, Geocoder.ca and Geocoder.us.  (Since Google restricts how we use the data and we have students from outside North America, Yahoo may be the only one we use initially.)
+
+(Sample output from Geokit::Geocoders::YahooGeocoder.geocode params[:location]:
+{"success":true,"lat":43.121695,"lng":-78.985219,"country_code":"US","city":"Niagara","state":"NY","zip":null,"street_address":null,"province":null,"district":null,"provider":"yahoo","full_address":"Niagara, NY, US","is_us?":true,"ll":"43.121695,-78.985219","precision":"zip"})
+
+The final version will be a fork of rmu/university-web.  This is an initial exploration of the geocoding and mapping APIs, so we'll have a mostly-one-page interface for everything that would be entered in the rmu interface (user, course, location – and for now we'll flatten the university-web relations of users and courses and terms), and a second page for the map.  
+
+After communications issues with OpenLayers, I have switched back to Google Maps API for the display layer for now.
+
+
