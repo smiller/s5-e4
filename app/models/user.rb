@@ -6,8 +6,4 @@ class User < ActiveRecord::Base
     course.name
   end
   
-  def course_color
-    course.color
-  end
-  
 end
